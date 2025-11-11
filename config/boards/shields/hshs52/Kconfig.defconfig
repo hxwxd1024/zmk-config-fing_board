@@ -1,18 +1,18 @@
 # Copyright (c) 2021-2022 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-if SHIELD_HSHS52_LEFT || SHIELD_HSHS52_RIGHT
+if SHIELD_fing_board_LEFT || SHIELD_fing_board_RIGHT
 
 config ZMK_SPLIT
     default y
 
 endif
 
-if SHIELD_HSHS52_DONGLE
+if SHIELD_fing_board_DONGLE
 
 # Max 16 characters in keyboard name
 config ZMK_KEYBOARD_NAME
-    default "HSHS52"
+    default "fing_board"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
