@@ -17,3 +17,6 @@ config ZMK_SPLIT
     default y
 
 endif
+
+config SHIELD_HSHS52_DONGLE
+    def_bool $(shields_list_contains,hshs52_dongle)
