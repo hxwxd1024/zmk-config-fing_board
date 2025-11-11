@@ -1,16 +1,6 @@
 # Copyright (c) 2021-2022 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-if SHIELD_HSHS52_LEFT
-
-config ZMK_KEYBOARD_NAME
-    default "HSHS52"
-
-config ZMK_SPLIT_BLE_ROLE_CENTRAL
-    default y
-
-endif
-
 if SHIELD_HSHS52_LEFT || SHIELD_HSHS52_RIGHT
 
 config ZMK_SPLIT
@@ -18,11 +8,29 @@ config ZMK_SPLIT
 
 endif
 
-config SHIELD_HSHS52_LEFT
-    def_bool $(shields_list_contains,hshs52_left)
+if SHIELD_HSHS52_DONGLE
 
-config SHIELD_HSHS52_RIGHT
-    def_bool $(shields_list_contains,hshs52_right)
+# Max 16 characters in keyboard name
+config ZMK_KEYBOARD_NAME
+    default "HSHS52"
 
-config SHIELD_HSHS52_DONGLE
-    def_bool $(shields_list_contains,hshs52_dongle)
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config ZMK_SPLIT
+    default y
+
+# Set this to the number of peripherals your dongle will have.
+# For a unibody, this would be 1. If you have left and right halves, set it to 2, etc.
+config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
+    default 2
+
+# Set this to ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS + your desired number of BT profiles (default is 5)
+config BT_MAX_CONN
+    default 7
+
+# Set this to the same number as BT_MAX_CONN
+config BT_MAX_PAIRED
+    default 7
+
+endif
